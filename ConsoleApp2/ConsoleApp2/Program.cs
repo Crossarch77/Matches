@@ -18,7 +18,7 @@ namespace ConsoleApp2
             switch (s)
             {
                 case 0:
-                    Console.WriteLine("Are you sure about 0? It's just 0. Press any key to try again...");
+                    Console.WriteLine("Are you sure about 0? It's just 0. Press Enter to try again...");
                     Console.ReadLine();
                     Calc();
                     break;
@@ -38,7 +38,7 @@ namespace ConsoleApp2
                     }
                     else if (s < 0)
                     {
-                        Console.WriteLine("Nice joke btw... Try again, just press any key to continue.");
+                        Console.WriteLine("Nice joke btw... Try again, just press Enter to continue.");
                         Console.ReadLine();
                         Calc();
                     }

@@ -6,7 +6,10 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            Loop();
+            do
+            {
+                Run();
+            } while (Console.ReadKey(true).Key != ConsoleKey.E);
         }
 
         static double Switch (double s)
@@ -17,7 +20,7 @@ namespace ConsoleApp2
                 case 0:
                     Console.WriteLine("Are you sure about 0? It's just 0. Press any key to try again...");
                     Console.ReadLine();
-                    Loop();
+                    Calc();
                     break;
                 case 1:
                     n = s * 4;
@@ -37,25 +40,37 @@ namespace ConsoleApp2
                     {
                         Console.WriteLine("Nice joke btw... Try again, just press any key to continue.");
                         Console.ReadLine();
-                        Loop();
+                        Calc();
                     }
                     break;
             }
             return n;
         }
 
-        static void Loop()
+        static void Calc()
         {
-            do
+            Console.Clear();
+            double n = 0;
+            Console.Write("Enter the number of squares: ");
+            double s = double.Parse(Console.ReadLine());
+            n = Switch(s);
+            Console.WriteLine("The minimum number of matches required is: " + n);
+            Console.WriteLine("Press E to exit or any key to try again.");
+            
+        }
+
+        static void Run()
+        {
+            try
             {
-                Console.Clear();
-                double n = 0;
-                Console.Write("Enter the number of squares: ");
-                double s = double.Parse(Console.ReadLine());
-                n = Switch(s);
-                Console.WriteLine("Number of matches is: " + n);
-                Console.WriteLine("Press E to exit or any key to try again.");
-            } while (Console.ReadKey(true).Key != ConsoleKey.E);
+                Calc();
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Please enter the number! Press Enter to try again.");
+                Console.ReadLine();
+                Run();
+            }
         }
     }
 }
